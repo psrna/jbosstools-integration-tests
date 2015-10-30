@@ -59,6 +59,7 @@ public abstract class WizardTestBase {
 	public void cleanup(){
 		ShellHandler.getInstance().closeAllNonWorbenchShells();
 		new ProjectExplorer().deleteAllProjects();
+		assertTrue("Some of the resources have not been deleted!", new ProjectExplorer().getExplorerItems().isEmpty());
 	}
 	
 	/**
