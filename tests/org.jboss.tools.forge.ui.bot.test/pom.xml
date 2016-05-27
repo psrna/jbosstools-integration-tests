@@ -13,40 +13,6 @@
 	<properties>
 		<systemProperties>-Ddatabase.path=${test.database}</systemProperties>
 	</properties>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<configuration>
-					<testSuite>org.jboss.tools.forge.ui.bot.test</testSuite>
-					<testClass>org.jboss.tools.forge2.ui.bot.test.suite.Forge2AllTest</testClass>
-					<dependencies combine.children="append">
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jboss.tools.forge.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jboss.ide.eclipse.as.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.jdt.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.eclipse.m2e.wtp.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-					</dependencies>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 	<profiles>
 		<profile>
 			<id>database</id>
@@ -55,14 +21,6 @@
 					<name>test.database</name>
 				</property>
 			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eclipse.tycho</groupId>
-						<artifactId>tycho-surefire-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
 			<properties>
 				<test.database>${test.database}</test.database>
 			</properties>
