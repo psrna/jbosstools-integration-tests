@@ -15,6 +15,7 @@ import org.jboss.reddeer.common.wait.TimePeriod;
 import org.jboss.reddeer.common.wait.WaitUntil;
 import org.jboss.reddeer.core.handler.ShellHandler;
 import org.jboss.reddeer.eclipse.condition.ConsoleHasText;
+import org.jboss.reddeer.eclipse.condition.ConsoleIsTerminated;
 import org.jboss.reddeer.eclipse.core.resources.ExplorerItem;
 import org.jboss.reddeer.eclipse.jdt.ui.ProjectExplorer;
 import org.jboss.reddeer.eclipse.ui.console.ConsoleView;
@@ -76,7 +77,7 @@ public class NodeJSLauncherTest extends JSTTestBase {
 		} catch (WaitTimeoutExpiredException e) {
 			Assert.fail("Node.js App is not running!");
 		}
-		console.terminateConsole();
+		terminateConsole();
 	}
 
 	@Test
@@ -96,7 +97,16 @@ public class NodeJSLauncherTest extends JSTTestBase {
 
 		assertTrue("Node.js App is not debugging!", console.getConsoleText().contains("Debugger listening"));
 
+		terminateConsole();
+	}
+	
+	private void terminateConsole(){
+		
+		final ConsoleView console = new ConsoleView();
+		console.open();
+		assertTrue(console.getConsoleLabel().contains(TEST_APP_NAME));
 		console.terminateConsole();
+		new WaitUntil(new ConsoleIsTerminated()); 
 	}
 
 }
