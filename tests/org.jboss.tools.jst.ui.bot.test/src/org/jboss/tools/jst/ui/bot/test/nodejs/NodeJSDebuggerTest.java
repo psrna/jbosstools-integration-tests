@@ -103,7 +103,7 @@ public class NodeJSDebuggerTest extends JSTTestBase {
         DefaultTree debugTree = new DefaultTree();
         new WaitUntil(
                       new TreeContainsItem(debugTree, new RegexMatcher("\\(anonymous function\\)(.*)(index\\.js)(.*)")),
-                      TimePeriod.LONG);
+                      TimePeriod.VERY_LONG);
         
         RegexMatcher matcher = new RegexMatcher("\\(anonymous function\\)(.*)(index\\.js)(.*)");
         doubleClickTreeItem(debugTree, matcher);
